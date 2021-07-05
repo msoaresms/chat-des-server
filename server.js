@@ -10,6 +10,7 @@ app.use(express.json());
 app.post("/create-room", (req, res) => {
   rooms.push(req.body);
   res.status(200).send({ msg: "created" });
+  console.log(rooms)
 });
 
 app.get("/enter-room", (req, res) => {
@@ -19,6 +20,7 @@ app.get("/enter-room", (req, res) => {
   if (roomIndex != -1) {
     res.status(200).send(rooms[roomIndex]);
     rooms.splice(roomIndex, 1);
+    console.log(rooms);
   } else {
     res.status(400).send({ msg: "NOT FOUND" });
   }
